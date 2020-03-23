@@ -1,0 +1,8 @@
+.Header__contentWrapper {
+    flex: 1;
+    position: absolute;
+    right: map-get($spacers, 3);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

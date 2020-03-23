@@ -1,0 +1,35 @@
+$fa-font-path: "wp-content/themes/wasabee-understrap-child/node_modules/font-awesome/fonts/";
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+@import "../../../node_modules/font-awesome/scss/font-awesome.scss";
+
+.wp-block {
+    display: inline;
+    margin: 0;
+}
+
+.editor-block-list__block-edit {
+    width: 100%;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.editor-block-list__layout {
+    padding-right: 0;
+}
+
+.acf-block-preview {
+    font-family: Lato !important;
+    @import "../theme/variables/index";
+    @import "../theme/mixins/index";
+    @import "../theme/utilities/index";
+    @import "../theme/base/index";
+    @import "../theme/components/index";
+}
+
+.acf-input-wrap, .link-wrap {
+    width: 100%;
+    input {
+        width: 100%;
+    }
+}

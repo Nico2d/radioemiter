@@ -1,0 +1,10 @@
+@mixin dash($color: $gray-300, $length: 15px, $gap: 50%) {
+    background-image: linear-gradient(
+        to right,
+        $color $gap,
+        transparent 0%
+    );
+    background-position: bottom;
+    background-size: $length 100%;
+    background-repeat: repeat-x;
+}

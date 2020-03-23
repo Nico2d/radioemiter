@@ -1,0 +1,5 @@
+@each $space-key, $space-value in $spacers {
+    .Whitespace-#{$space-key} {
+        height: $space-value;
+    }
+}

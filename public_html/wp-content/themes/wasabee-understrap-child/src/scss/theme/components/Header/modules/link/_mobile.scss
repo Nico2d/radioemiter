@@ -1,0 +1,30 @@
+.Header__content__link {
+    position: relative;
+    width: 100%;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -90%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: $gray-400;
+    }
+}
+
+.Header__content__linkWrapper.--is-root {
+    .Header__content__link {
+        flex: 1;
+        font-size: #{$header-size * 0.95} !important;
+        font-weight: 700;
+    }
+
+    &:last-of-type .Header__content__link::after {
+        background: transparent;
+    }
+}
+
+.Header__content__linkWrapper:not(.--is-root) .Header__content__link {
+    font-size: #{$header-size * 0.65} !important;
+}

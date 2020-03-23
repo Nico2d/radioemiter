@@ -1,0 +1,11 @@
+.Container {
+    padding: 0 nth($container-spaces, 2);
+    
+    &--is-half {
+        padding: 0 nth($container-spaces, 1);
+    }
+
+    &--is-double {
+        padding: 0 nth($container-spaces, 3);
+    }
+}

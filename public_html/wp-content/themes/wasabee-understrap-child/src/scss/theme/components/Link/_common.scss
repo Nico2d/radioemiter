@@ -1,0 +1,14 @@
+.Link {
+    @extend .HeroContent;
+
+    color: $primary;
+    text-decoration: none;
+
+    &--is-filled-button {
+        @include ButtonFilled($primary);
+    }
+
+    &--is-empty-button {
+        @include ButtonEmpty($primary);
+    }
+}

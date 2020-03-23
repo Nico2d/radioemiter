@@ -1,0 +1,6 @@
+.Header__content__link {
+    @extend .HeroContent;
+    color: $font-main;
+    text-decoration: none !important;
+    white-space: nowrap;
+}

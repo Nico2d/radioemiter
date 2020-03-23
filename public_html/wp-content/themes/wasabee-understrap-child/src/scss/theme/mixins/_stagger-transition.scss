@@ -1,0 +1,7 @@
+@mixin StaggerTransition($selector, $delay: 50ms, $count: 20) {
+    @for $i from 1 through $count {
+        #{$selector}:nth-of-type(#{$i}) {
+            transition-delay: calc(#{$delay * ($i - 1)});
+        }
+    }
+}

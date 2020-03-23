@@ -1,0 +1,7 @@
+.Header__toggler__text {
+    position: absolute;
+    right: 4px;
+    bottom: 7px;
+    font-size: #{$header-size * 0.5};
+    font-weight: 600;
+}

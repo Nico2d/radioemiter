@@ -1,0 +1,49 @@
+.PostFilterWithImages {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .slick-slide {
+        margin: map-get($spacers, 3) 4vh;
+    }
+}
+
+.PostFilterWithImages__LinkCard {
+    width: 100px;
+    height: 130px;
+    text-decoration: none !important;
+}
+
+.PostFilterWithImages__LinkCard__imageContainer {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+}
+
+.PostFilterWithImages__LinkCard__image {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    filter: grayscale(100%);
+}
+
+.PostFilterWithImages__LinkCard__text {
+    font-size: $paragraph-size;
+    font-weight: 500;
+    text-align: center;
+    margin: 8px auto;
+    color: #555;
+}
+
+.PostFilterWithImages__LinkCard--is-active {
+    .PostFilterWithImages__LinkCard__image {
+        filter: grayscale(0%);
+    }
+
+    .PostFilterWithImages__LinkCard__text {
+        font-weight: 600;
+        color: $primary;
+    }
+}

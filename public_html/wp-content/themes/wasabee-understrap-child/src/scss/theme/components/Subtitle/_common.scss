@@ -1,0 +1,16 @@
+.Subtitle {
+    margin: #{$header-margin / 1.3} 0 0;
+    font-size: #{$header-size * 0.8};
+    line-height: #{$header-margin * 1.25};
+    font-weight: 600;
+
+    &:first-child,
+    & + & {
+        margin-top: 0;
+    }
+
+    .Title + & {
+        margin: 0;
+        padding-bottom: 0;
+    }
+}
