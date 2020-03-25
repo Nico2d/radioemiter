@@ -16,7 +16,7 @@ if(getAlbumCoverFromLastfmAPI($songArtistAPI, $songTitleAPI) !== false) {
 ?>
     <div class="MusicPlayer__cover"><img src=<?= $imageSrc ?>></img> </div>
 
-    <div class="MusicPlayer__Wrapper">
+    <div class="MusicPlayer__TextContainer">
         <p class="MusicPlayer__songTitle"> <?= $songTitle ?> </p>
         <p class="MusicPlayer__songAuthor"> <?= $songArtist ?> </p>
     </div>
@@ -29,7 +29,7 @@ function getAlbumCoverFromLastfmAPI($songArtistAPI, $songTitleAPI) {
     $json = file_get_contents ($url);
     $array = json_decode($json, true);
 
-    if(!empty($array['error'])) {
+    if(!empty($array['error'])) { 
         return false;
     }
 

@@ -42,9 +42,8 @@ $menu = wp_get_nav_menu_object($menuId);
 
 	
 	<div class="MusicPlayer__Container Container" >	
-		<div style="position: absolute; left: 50%;">
+		<div class="MusicPlayer__center">
 			<div class="MusicPlayer" id="MusicPlayer"> <!-- Player here generated --> </div>
-
 
 			<div class="MusicPlayer__Controls">
 				<div class="Controls__button"> <i onclick="playMusic()" id='playButton' class="fas fa-play"></i> </div>
