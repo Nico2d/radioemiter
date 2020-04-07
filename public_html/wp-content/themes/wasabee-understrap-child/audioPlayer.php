@@ -101,7 +101,7 @@ function getMp3StreamTitle($streamingUrl, $interval, $offset = 0, $headers = tru
             return getMp3StreamTitle($streamingUrl, $interval, $offset + $interval, false);
         }
     } else {
-        throw new Exception("Unable to open stream [{$streamingUrl}]");
+        throw new Exception("Unable to open stream");
     }
 
 }
