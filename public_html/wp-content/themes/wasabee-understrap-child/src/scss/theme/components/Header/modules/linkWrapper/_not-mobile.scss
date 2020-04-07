@@ -1,0 +1,10 @@
+.Header__content__linkWrapper:hover::before {
+    position: absolute;
+    bottom: -8px;
+    width: 50%;
+    left: 25%;
+    height: 3px;
+    border-radius: 1px;
+    background: $gradient;
+    content: '';
+}

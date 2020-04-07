@@ -1,19 +1,18 @@
-$base-font-size: 1rem;
-$font-family-sans-serif: Lato, sans-serif;
+$base-font-size: 1em;
+$font-family-sans-serif: 'Exo 2', sans-serif;//Lato, sans-serif;
 $slick-font-path: '../node_modules/slick-carousel/slick/fonts/';
 $fa-font-path: "../node_modules/font-awesome/fonts/";
 
-$paragraph-size: rem(17px);
+$paragraph-size: 17px;
 $paragraph-line-height: 1.5em;
 $paragraph-margin: 20px;
 $paragraph-margin-bottom: 0;
 
-$header-size: rem(25px);
 $header-line-height: 1.25em;
 $header-margin: $paragraph-margin * 1.2;
 
 $blockquote-color: var(--gray-500);
-$blockquote-size: rem(23px);
+$blockquote-size: 23px;
 $blockquote-line-height: 1.5em;
 $blockquote-margin: $paragraph-margin * 1.5;
 

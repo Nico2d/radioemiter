@@ -1,14 +1,14 @@
 === Leaflet Map ===
 Author: bozdoz
-Author URI: https://www.twitter.com/bozdoz/
+Author URI: https://bozdoz.com
 Plugin URI: https://wordpress.org/plugins/leaflet-map/
-Contributors: bozdoz, Remigr, nielsalstrup, jeromelebleu, gerital, peteruithoven
+Contributors: bozdoz, remigr, gerital, sal0max
 Donate link: https://www.paypal.me/bozdoz
 Tags: leaflet, map, mobile, javascript, openstreetmap, mapquest, interactive
 Requires at least: 4.6
-Tested up to: 5.2.2
-Version: 2.15.0
-Stable tag: 2.15.0
+Tested up to: 5.3.2
+Version: 2.17.0
+Stable tag: 2.17.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,8 +85,6 @@ Check out other examples on the Shortcode Helper page in the Leaflet Map admin s
 
 Check out the **source code** and **more** details on [GitHub](https://github.com/bozdoz/wp-plugin-leaflet-map)!
 
-Shoot me a question [@bozdoz](https://www.twitter.com/bozdoz/).
-
 == Installation ==
 
 1. Choose to add a new plugin, then click upload
@@ -154,6 +152,23 @@ Yes: use the keyword `attribution` in your shortcode (semi-colon separated list 
 8. MapQuest requires an app key, get it from their website; alternatively, you can use OpenStreetMap as a free tile service (remember to add an attribution where necessary).
 
 == Changelog ==
+
+= 2.17.0 =
+* Adds `detect-retina` to plugin options and `leaflet-map` shortcode
+* Makes shortcode in excerpts conditional (enable it in admin->leaflet-map->settings)
+
+= 2.16.2 =
+* Fix to wpautop by removing spaces in javascript
+
+= 2.16.1 =
+* Updates default Leaflet to 1.6.0
+* Adds optional circle markers as [leaflet-geojson circleMarker]
+* removes random unique map id's for caching purposes
+
+= 2.16.0 =
+* allow author roles to see shortcodes
+* adds [leaflet-polygon] shortcode
+* makes map ids unique; removes auto-incremented map counts
 
 = 2.15.0 =
 * Updates rawgit URL's to use jsdelivr, unpkg, and githubusercontent.com
@@ -359,11 +374,25 @@ Yes: use the keyword `attribution` in your shortcode (semi-colon separated list 
 
 == Upgrade Notice ==
 
+= 2.17.0 =
+Makes shortcode in excerpts conditional (enable it in admin->leaflet-map->settings)
+
+= 2.16.2 =
+Fixes missing maps by removing spaces in the JavaScript which some themes turn into paragraphs
+
+= 2.16.1 =
+Updates default Leaflet to 1.6.0
+Changes map generation from a pre-defined randomly identified div element to a JavaScript generated div which is created (insertBefore) each inserted script tag
+
+= 2.16.0 =
+Adds [leaflet-polygon]
+Allows author roles to see shortcodes page
+
 = 2.15.0 =
-* Adds referer to file_get_contents, in case curl is disabled
-* Updates default Leaflet to 1.5.1
-* Fixes reset default values button in settings
-* Requires at least WordPress 4.6
+Adds referer to file_get_contents, in case curl is disabled
+Updates default Leaflet to 1.5.1
+Fixes reset default values button in settings
+Requires at least WordPress 4.6
 
 = 2.12.0 =
 Fixed links in shortcode helper page; fixed issue with marker popups that had single quotes; loading leaflet scripts and styles only when a map shortcode is used

@@ -22,3 +22,27 @@
     display: none;    
     visibility: hidden;
 }
+
+.Footer__Contact {
+    display: block;
+    padding: 0;
+}
+
+.Contact__Container {
+    padding: nth($container-spaces-mobile, 2);
+}
+
+.Footer__legal {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: '';
+        height: 3px;
+        width: 100%;
+        top: -2px;
+        z-index: 1001;
+        background: #b9292f;
+        background: linear-gradient(90deg, #b9292f 20%, #e69825 115%);
+    }
+}

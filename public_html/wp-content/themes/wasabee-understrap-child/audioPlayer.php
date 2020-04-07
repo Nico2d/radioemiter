@@ -1,14 +1,21 @@
 <?php 
 $castNow = getMp3StreamTitle('http://radioemiter.pl:8000/emiter.mp3', 19200);
-list($songArtist, $songTitle) = explode(' - ', $castNow);
+
+if (strpos($castNow, ' - ') !== false) {
+    list($songArtist, $songTitle) = explode(' - ', $castNow);
+} else {
+    $songTitle = $castNow;
+    $songArtist = '';
+}
+
 $songArtistAPI = str_replace(' ', '%20', $songArtist);
 $songTitleAPI = str_replace(' ', '%20', $songTitle);
 
 
 if(getAlbumCoverFromLastfmAPI($songArtistAPI, $songTitleAPI) !== false) {
     $imageSrc = getAlbumCoverFromLastfmAPI($songArtistAPI, $songTitleAPI);
-// } else if(getAlbumCoverFromYoutubeAPI($songArtistAPI, $songTitleAPI) !== false) {
-//     $imageSrc = getAlbumCoverFromYoutubeAPI($songArtistAPI, $songTitleAPI);
+} else if(getAlbumCoverFromYoutubeAPI($songArtistAPI, $songTitleAPI) !== false) {
+    $imageSrc = getAlbumCoverFromYoutubeAPI($songArtistAPI, $songTitleAPI);
 } else {
     $imageSrc = 'https://image.flaticon.com/icons/svg/702/702130.svg';
 }
@@ -25,6 +32,10 @@ if(getAlbumCoverFromLastfmAPI($songArtistAPI, $songTitleAPI) !== false) {
 function getAlbumCoverFromLastfmAPI($songArtistAPI, $songTitleAPI) {
     $lastfmApiKey = '24ea1ddb00614b6584fa6c8478591fd1';
     $url = "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=$lastfmApiKey&artist=$songArtistAPI&track=$songTitleAPI&format=json";
+    
+    if($url == '') {
+        return false;
+    }
 
     $json = file_get_contents ($url);
     $array = json_decode($json, true);

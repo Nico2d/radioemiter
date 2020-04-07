@@ -20,30 +20,28 @@
     &:nth-child(even) {
         flex-flow: row-reverse;
 
-        .Members__Container {
+        .Members__Container, .Members__contact {
             text-align: left;
-        }
-
-        .Members__foto { 
-            margin-right: 0;
-            margin-left: nth($container-spaces, 2);
         }
     }
 }
 
+.Members__Container, .Members__contact {
+    text-align: right;
+}
+
 .Members__Container {
     display: block;
-    text-align: right;
-    margin: auto 5rem;
+    margin: auto 5px;
 }
 
 .Members__name {
-    font-size: 2rem;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
 .Members__position {
-    font-size: 14px;
+    font-size: .8em;
 }
 
 .Members__description {
@@ -51,16 +49,16 @@
 }
 
 .Members__foto {
-    width: 250px;
-    height: 250px;
+    width: 15em;
+    height: 15em;
     position: relative;
-    background: linear-gradient(135deg, $primary 40%, $plastic-red 100%);
+    background: linear-gradient(130deg, rgba(185,41,47,1) 20%, rgba(230,152,37,1) 115%);
     clip-path: circle(50% at 50% 50%);
-    margin-right: nth($container-spaces, 2);
+    margin: auto 10px;
 
     >img {
-        width: 230px;
-        height: 230px;
+        width: 14em;
+        height: 14em;
         position: absolute;
         margin: auto;
         top: 0;

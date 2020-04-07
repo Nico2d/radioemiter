@@ -2,8 +2,7 @@
     position: relative;
     display: flex;
     width: 100%;
-    margin-left: 0;
-    margin-bottom: map-get($spacers, 4);
+    margin: .9rem 0.2rem;
     opacity: 0;
     transform: translateX(80px);
     transition:

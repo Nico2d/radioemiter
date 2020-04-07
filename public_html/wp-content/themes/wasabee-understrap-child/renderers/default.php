@@ -7,8 +7,11 @@ if (!empty($className)) {
     echo "<div class='$className'>";
 }
 
-foreach (array_keys(get_field_objects()) as $field) {
-    new RenderEngine(get_field_object($field));
+
+if(is_array(get_field_objects())){
+    foreach (array_keys(get_field_objects()) as $field) {
+        new RenderEngine(get_field_object($field));
+    }
 }
 
 if (!empty($className)) {

@@ -8,7 +8,7 @@
 @mixin ButtonMobile {
     @include Button;
     padding: 10px 36px !important;
-    font-size: #{$header-size * 0.75};
+    font-size: $base-font-size;
 }
 
 @mixin ButtonFilled($backgroundColor) {

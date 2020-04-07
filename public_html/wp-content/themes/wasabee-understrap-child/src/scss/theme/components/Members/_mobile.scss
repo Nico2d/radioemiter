@@ -1,0 +1,19 @@
+.Members {
+    font-size: 12px;
+    height: 11rem;
+
+    &::before{
+        height: 8rem;
+    }
+}
+
+.Members__foto {
+    height: unset;
+    width: unset;
+    padding: 70px;
+
+    >img{
+        width: 125px;
+        height: 125px;
+    }
+}

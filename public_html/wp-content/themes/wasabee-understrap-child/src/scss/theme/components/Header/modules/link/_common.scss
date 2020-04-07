@@ -2,5 +2,6 @@
     @extend .HeroContent;
     color: $font-main;
     text-decoration: none !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+    text-transform: uppercase;
 }

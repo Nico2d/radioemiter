@@ -24,14 +24,7 @@ class Leaflet_Map
      * 
      * @var string major minor patch version
      */
-    public static $leaflet_version = '1.5.1';
-
-    /**
-     * Number of maps on page; used for unique map ids
-     * 
-     * @var int $map_count
-     */
-    public $map_count = 0;
+    public static $leaflet_version = '1.6.0';
 
     /**
      * Files to include upon init
@@ -58,6 +51,10 @@ class Leaflet_Map
         'leaflet-line' => array(
             'file' => 'class.line-shortcode.php',
             'class' => 'Leaflet_Line_Shortcode'
+        ),
+        'leaflet-polygon' => array(
+            'file' => 'class.polygon-shortcode.php',
+            'class' => 'Leaflet_Polygon_Shortcode'
         ),
         'leaflet-circle' => array(
             'file' => 'class.circle-shortcode.php',
@@ -123,11 +120,12 @@ class Leaflet_Map
         
         add_action( 'wp_enqueue_scripts', array('Leaflet_Map', 'enqueue_and_register') );
 
-        /* 
-        allows maps on excerpts 
-        todo? should be optional somehow (admin setting?)
-        */
-        add_filter('the_excerpt', 'do_shortcode');
+        $settings = self::settings();
+
+        if ($settings->get('shortcode_in_excerpt')) {
+            // allows maps in excerpts
+            add_filter('the_excerpt', 'do_shortcode');
+        }
     }
 
     /**
@@ -150,10 +148,9 @@ class Leaflet_Map
     public static function uninstall()
     {
         // remove settings in db
-        // think it needs to be included again (because __construct 
-        // won't need to execute)
-        include_once LEAFLET_MAP__PLUGIN_DIR . 'class.plugin-settings.php';
-        $settings = Leaflet_Map_Plugin_Settings::init();
+        // it needs to be included again because __construct 
+        // won't need to execute
+        $settings = self::settings();
         $settings->reset();
 
         // remove geocoder locations in db
@@ -175,9 +172,7 @@ class Leaflet_Map
     public static function enqueue_and_register()
     {
         /* defaults from db */
-        // Leaflet_Map_Plugin_Settings
-        include_once LEAFLET_MAP__PLUGIN_DIR . 'class.plugin-settings.php';
-        $settings = Leaflet_Map_Plugin_Settings::init();
+        $settings = self::settings();
 
         $js_url = $settings->get('js_url');
         $css_url = $settings->get('css_url');
@@ -243,7 +238,7 @@ class Leaflet_Map
     public function json_sanitize($arr, $args)
     {
         // remove nulls
-        $arr = self::filter_null($arr);
+        $arr = $this->filter_null($arr);
 
         // sanitize output
         $args = array_intersect_key($args, $arr);
@@ -282,6 +277,7 @@ class Leaflet_Map
             'fillOpacity' => isset($fillopacity) ? $fillopacity : null,
             'fillRule' => isset($fillrule) ? $fillrule : null,
             'className' => isset($classname) ? $classname : null,
+            'radius' => isset($radius) ? $radius : null
             );
 
         $args = array(
@@ -297,7 +293,8 @@ class Leaflet_Map
             'fillColor' => FILTER_SANITIZE_STRING,
             'fillOpacity' => FILTER_VALIDATE_FLOAT,
             'fillRule' => FILTER_SANITIZE_STRING,
-            'className' => FILTER_SANITIZE_STRING
+            'className' => FILTER_SANITIZE_STRING,
+            'radius' => FILTER_VALIDATE_FLOAT
             );
 
         return $this->json_sanitize($style, $args);
@@ -336,5 +333,14 @@ class Leaflet_Map
             }
             echo ";";
         }
+    }
+
+    /**
+     * Get settings from Leaflet_Map_Plugin_Settings
+     * @return Leaflet_Map_Plugin_Settings
+     */
+    public static function settings () {
+        include_once LEAFLET_MAP__PLUGIN_DIR . 'class.plugin-settings.php';
+        return Leaflet_Map_Plugin_Settings::init();
     }
 }

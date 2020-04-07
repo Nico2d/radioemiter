@@ -235,6 +235,16 @@ class Leaflet_Map_Plugin_Settings
                     $foreachmap
                 )
             ),
+            'detect_retina' => array(
+                'display_name' => __('Detect Retina', 'leaflet-map'),
+                'default' => '0',
+                'type' => 'checkbox',
+                'helptext' => sprintf(
+                    '%1$s %2$s <br /> <code>[leaflet-map detect-retina]</code>',
+                    __('Fetch tiles at different zoom levels to appear smoother on retina displays.', 'leaflet-map'),
+                    $foreachmap
+                )
+            ),
             'js_url' => array(
                 'display_name'=>__('JavaScript URL', 'leaflet-map'),
                 'default' => sprintf('https://unpkg.com/leaflet@%s/dist/leaflet.js', $leaflet_version),
@@ -286,6 +296,11 @@ class Leaflet_Map_Plugin_Settings
                 'default' => 'https://unpkg.com/@mapbox/togeojson@0.16.0/togeojson.js',
                 'type' => 'text',
                 'helptext' => __('ToGeoJSON converts KML and GPX files to GeoJSON; if you plan to use [leaflet-kml] or [leaflet-gpx] then this library is loaded.  You can change the default if you need.', 'leaflet-map')
+            ),
+            'shortcode_in_excerpt' => array(
+                'display_name' => __('Show maps in excerpts', 'leaflet-map'),
+                'default' => '0',
+                'type' => 'checkbox',
             ),
         );
 

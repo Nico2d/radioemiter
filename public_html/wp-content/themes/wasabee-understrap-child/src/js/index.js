@@ -43,15 +43,41 @@ getAllMenuLabels().forEach((labelId) => {
     .click(() => toggleAriaExpandedAttr(labelContainer.add(dropdown)));    
 });
 
-$('.Audycje').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  variableWidth: false,
-  infinite: true,
-  waitForAnimate: true,
-  swipeToSlide: true,
-  arrows: true,
-});
+// $('.Audycje').slick({
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+//   variableWidth: true,
+//   infinite: false,
+//   waitForAnimate: true,
+//   swipeToSlide: true,
+//   responsive: [{
+//     breakpoint: 767,
+//     settings: {
+//       slidesToShow: 1,
+//       slidesToScroll: 1
+//     }
+//   }]
+// });
+
+if (window.matchMedia("(max-width: 767px)").matches) {
+  $('.PostFilterWithImages').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    infinite: false,
+    waitForAnimate: false,
+    swipeToSlide: true,
+    arrows: false,
+    mobileFirst: true,
+    responsive: [{
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    }]
+  });
+}
 
 window.onscroll = function() {myFunction()};
 
@@ -59,7 +85,6 @@ var header = document.getElementById("Header");
 var sticky = header.offsetTop;
 
 function myFunction() {
-  console.log("hallo");
   if (window.pageYOffset > sticky) {
     header.classList.add("sticky");
   } else {

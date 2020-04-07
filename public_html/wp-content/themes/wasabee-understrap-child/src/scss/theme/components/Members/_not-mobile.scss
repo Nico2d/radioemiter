@@ -1,0 +1,17 @@
+.Members {
+    &:nth-child(even) {
+        .Members__foto { 
+            margin-right: 0;
+            margin-left: nth($container-spaces, 2);
+        }
+    }
+}
+
+
+.Members__foto {
+    margin-right: nth($container-spaces, 2);
+}
+
+.Members__Container {
+    margin: auto 5rem;
+}

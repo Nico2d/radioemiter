@@ -12,7 +12,7 @@
     z-index: 9999;
 
     &::before {
-        font-size: #{$header-size * 1.05};
+        font-size: $base-font-size;
         color: $primary;
     }
 }

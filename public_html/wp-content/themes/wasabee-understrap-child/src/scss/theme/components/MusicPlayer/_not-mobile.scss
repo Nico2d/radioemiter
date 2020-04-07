@@ -15,5 +15,10 @@
 .MusicPlayer__TextContainer {
     top: 50%;
     left: 50%;
+    width: 545px;
     transform: translatey(-85%);
+}
+
+.MusicPlayer__songTitle {
+    white-space: unset;
 }

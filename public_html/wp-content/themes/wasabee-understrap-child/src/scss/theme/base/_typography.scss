@@ -10,6 +10,18 @@
 body {
     background: $background-main;
     color: $font-main;
+
+    &::-webkit-scrollbar {
+        width: .25rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #1e1e24;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #cf2e2e;
+    }
 }
 
 h4, h5, h6 {
@@ -22,17 +34,17 @@ h4, h5, h6 {
 }
 
 h4 {
-    font-size: $header-size / 1.7;
+    font-size: $base-font-size / 1.7;
     margin-bottom: $header-margin / 1.7;
 }
 
 h5 {
-    font-size: $header-size / 1.8;
+    font-size: $base-font-size / 1.8;
     margin-bottom: $header-margin / 1.8;
 }
 
 h6 {
-    font-size: $header-size / 2;
+    font-size: $base-font-size / 2;
     margin-bottom: $header-margin / 2;
 }
 

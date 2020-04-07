@@ -108,7 +108,7 @@
                 },
                 "terms": "poniedzialek",
                 "taxonomy": "audycje_categories",
-                "wrapper_class_name": "Audycje Container--is-double"
+                "wrapper_class_name": "Audycje"
             },
             { 
                 "name": "audycje_wt",
@@ -117,7 +117,7 @@
                 },
                 "terms": "wtorek",
                 "taxonomy": "audycje_categories",
-                "wrapper_class_name": "Audycje Container--is-double"
+                "wrapper_class_name": "Audycje"
             },
             { 
                 "name": "audycje_sroda",
@@ -126,7 +126,7 @@
                 },
                 "taxonomy": "audycje_categories",
                 "terms": "sroda",
-                "wrapper_class_name": "Audycje Container--is-double"
+                "wrapper_class_name": "Audycje"
             },
             { 
                 "name": "audycje_czwartek",
@@ -135,7 +135,7 @@
                 },
                 "taxonomy": "audycje_categories",
                 "terms": "czwartek",
-                "wrapper_class_name": "Audycje Container--is-double"
+                "wrapper_class_name": "Audycje"
             },
             { 
                 "name": "audycje_piatek",
@@ -144,12 +144,12 @@
                 },
                 "taxonomy": "audycje_categories",
                 "terms": "piatek",
-                "wrapper_class_name": "Audycje Container--is-double"
+                "wrapper_class_name": "Audycje"
             },
             {
                 "name": "Wiadomosci",
                 "posts_args": {
-                    "numberposts": 5
+                    "posts_per_page": 10
                 },
                 "wrapper_class_name": "PostsList PostList--light Container",
                 "taxonomy": "category"

@@ -2,6 +2,8 @@
     position: absolute;
     right: 4px;
     bottom: 7px;
-    font-size: #{$header-size * 0.5};
+    font-size: #{$base-font-size * 0.5};
     font-weight: 600;
+    color: $white;
+    opacity: .5;
 }

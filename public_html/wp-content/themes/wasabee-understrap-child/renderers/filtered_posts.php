@@ -2,10 +2,18 @@
 
 include_once(get_stylesheet_directory() . "/template-parts/RenderEngine.php");
 $url = $_SERVER['REQUEST_URI'];
+$taxonomy = 'wiadomosci/';
+
+if(empty(explode('/', $url)[4])){
+    $page = 1;
+} else {
+    $page = explode('/', $url)[4];
+}
 
 if($url != '/') {
     $categoryFromURL = explode('/', $url)[2];
     $terms = empty($block['terms']) ? $categoryFromURL : $block['terms'];
+
     $filterArgs = [
         'tax_query' => [
             [
@@ -28,6 +36,7 @@ $posts = get_posts($block['posts_args']);
     <div class="<?=$block['wrapper_class_name'] ?>">
 <?php endif; ?>
 
+<!-- <h3> posty teest</h3> -->
 
 <?php foreach ($posts as $post) {
     $authorId = $post->post_author;

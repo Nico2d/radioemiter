@@ -1,12 +1,12 @@
 .Hero {
     flex-flow: column nowrap;
+    height: unset;
 }
 
 .Hero__Side {
     flex: 1;
     margin: 0;
     width: 100%;
-    padding: 0 nth($container-spaces-mobile, 3) !important;
 
     &--indent {
         padding: map-get($spacers, 4) nth($container-spaces-mobile, 3) !important;

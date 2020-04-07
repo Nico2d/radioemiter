@@ -25,29 +25,31 @@ require_once LEAFLET_MAP__PLUGIN_DIR . 'shortcodes/class.shortcode.php';
 class Leaflet_Map_Shortcode extends Leaflet_Shortcode
 {
     /**
-     * Unique ID for a map
-     * 
-     * @var int $map_id
-     */
-    protected $map_id = 0;
-
-    /**
      * Instantiate class
      */
     public function __construct()
     {
         parent::__construct();
         $this->enqueue();
-        $this->incrementMap();
     }
 
     /**
-     * Increment the map count
+     * Enqueue Scripts and Styles for Leaflet 
+     * 
+     * @return null
      */
-    protected function incrementMap()
+    protected function enqueue()
     {
-        $this->LM->map_count++;
-        $this->map_id = $this->LM->map_count;
+        wp_enqueue_style('leaflet_stylesheet');
+        wp_enqueue_script('wp_leaflet_map');
+
+        if (wp_script_is('leaflet_mapquest_plugin', 'registered')) {
+            // mapquest doesn't accept direct tile access as of July 11, 2016
+            wp_enqueue_script('leaflet_mapquest_plugin');
+        }
+
+        // enqueue user-defined scripts
+        do_action('leaflet_map_enqueue');
     }
 
     /**
@@ -159,25 +161,6 @@ class Leaflet_Map_Shortcode extends Leaflet_Shortcode
     }
 
     /**
-     * Enqueue Scripts and Styles for Leaflet 
-     * 
-     * @return null
-     */
-    protected function enqueue()
-    {
-        wp_enqueue_style('leaflet_stylesheet');
-        wp_enqueue_script('wp_leaflet_map');
-
-        if (wp_script_is('leaflet_mapquest_plugin', 'registered')) {
-            // mapquest doesn't accept direct tile access as of July 11, 2016
-            wp_enqueue_script('leaflet_mapquest_plugin');
-        }
-
-        // enqueue user-defined scripts
-        do_action('leaflet_map_enqueue');
-    }
-
-    /**
      * Get script for shortcode
      * 
      * @param array  $atts    sometimes this is null
@@ -215,58 +198,66 @@ class Leaflet_Map_Shortcode extends Leaflet_Shortcode
             $tileurl = empty($tileurl) ? $settings->get('map_tile_url') : $tileurl;
             $subdomains = empty($subdomains) ? 
                 $settings->get('map_tile_url_subdomains') : $subdomains;
+
+            $detect_retina = empty($detect_retina) ? $settings->get('detect_retina') : $detect_retina;
         }
 
         /* should be iterated for multiple maps */
         ob_start(); ?>
-        <div 
-            id="leaflet-map-<?php echo $this->map_id; ?>" 
-            class="leaflet-map" 
-            style="height:<?php 
-                echo $height; 
-            ?>; width:<?php 
-                echo $width; 
-            ?>;"></div>
         <script>
-        window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
-        window.WPLeafletMapPlugin.push(function () {
-            var baseUrl = '<?php echo $tileurl; ?>',
-                base = (!baseUrl && window.MQ) ? 
-                    MQ.mapLayer() : L.tileLayer(baseUrl, { 
-                        subdomains: '<?php echo $subdomains; ?>'
-                    }),
-                options = L.Util.extend({}, {
-                    maxZoom: <?php echo $max_zoom; ?>,
-                    minZoom: <?php echo $min_zoom; ?>,
-                    layers: [base],
-                    zoomControl: <?php echo $zoomcontrol; ?>,
-                    scrollWheelZoom: <?php echo $scrollwheel; ?>,
-                    doubleClickZoom: <?php echo $doubleclickzoom; ?>,
-                    attributionControl: false
-                }, <?php echo $more_options; ?>),
-                map = L.map('leaflet-map-<?php echo $this->map_id; ?>', options)
-                    .setView([<?php 
-                        echo $lat . ',' . $lng . '],' . $zoom; 
-                    ?>);
-            if (<?php echo $fitbounds; ?>) {
-                map._shouldFitBounds = true;
-            }
-            <?php
-            if ($attribution) :
-                /* add any attributions, semi-colon-separated */
-                $attributions = explode(';', $attribution);
-                ?>
-                var attControl = L.control.attribution({prefix:false}).addTo(map);
+        (function () {
+            // TODO: This could/should be abstracted so we don't duplicate code in image-shortcode
+            var scriptsSoFar = document.getElementsByTagName('script');
+            var thisScript = scriptsSoFar[scriptsSoFar.length - 1];
+            // create map HTMLElement
+            var mapElement = document.createElement('div');
+            mapElement.className = 'leaflet-map';
+            mapElement.style.height = "<?php echo $height; ?>";
+            mapElement.style.width = "<?php echo $width; ?>";
+            // insert just before this script
+            thisScript.parentNode.insertBefore(mapElement, thisScript);
+            // push deferred map creation function
+            window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+            window.WPLeafletMapPlugin.push(function () {
+                var baseUrl = '<?php echo $tileurl; ?>',
+                    base = (!baseUrl && window.MQ) ? 
+                        MQ.mapLayer() : L.tileLayer(baseUrl, { 
+                            subdomains: '<?php echo $subdomains; ?>',
+                            detectRetina: <?php echo $detect_retina; ?>,
+                        }),
+                    options = L.Util.extend({}, {
+                        maxZoom: <?php echo $max_zoom; ?>,
+                        minZoom: <?php echo $min_zoom; ?>,
+                        layers: [base],
+                        zoomControl: <?php echo $zoomcontrol; ?>,
+                        scrollWheelZoom: <?php echo $scrollwheel; ?>,
+                        doubleClickZoom: <?php echo $doubleclickzoom; ?>,
+                        attributionControl: false
+                    }, <?php echo $more_options; ?>),
+                    map = L.map(mapElement, options)
+                        .setView([<?php 
+                            echo $lat . ',' . $lng . '],' . $zoom; 
+                        ?>);
+                if (<?php echo $fitbounds; ?>) {
+                    map._shouldFitBounds = true;
+                }
                 <?php
-                foreach ($attributions as $a):
+                if ($attribution) :
+                    /* add any attributions, semi-colon-separated */
+                    $attributions = explode(';', $attribution);
+                    ?>
+                    var attControl = L.control.attribution({prefix:false}).addTo(map);
+                    <?php
+                    foreach ($attributions as $a):
+                    ?>
+                        attControl.addAttribution('<?php echo trim($a); ?>');
+                    <?php
+                    endforeach;
+                endif;
                 ?>
-                    attControl.addAttribution('<?php echo trim($a); ?>');
-                <?php
-                endforeach;
-            endif;
-            ?>
-            window.WPLeafletMapPlugin.maps.push(map);
-        }); // end add
+                window.WPLeafletMapPlugin.maps.push(map);
+            }); // end add
+        })(); // end IIFE
         </script><?php
 
         return ob_get_clean();

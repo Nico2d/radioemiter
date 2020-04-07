@@ -24,9 +24,8 @@ $menu = wp_get_nav_menu_object($menuId);
 			$.ajaxSetup({ cache: false }); 
 			$('#MusicPlayer').load('<?= get_stylesheet_directory_uri(); ?>' + '/audioPlayer.php');
 			setInterval(function() {
-				console.log("refresh");
 				$('#MusicPlayer').load('<?= get_stylesheet_directory_uri(); ?>' + '/audioPlayer.php');
-			}, 100000000); 
+			}, 10000000); //10000
 		});
 		// ]]>
 	</script>
@@ -59,8 +58,8 @@ $menu = wp_get_nav_menu_object($menuId);
 
 
 	<div>
-		<div class='HeaderWrapper Container' id="Header">
-			<header class="Header" aria-expanded="false" aria-label="Toggle navigation">
+		<div class='HeaderWrapper ' id="Header">
+			<header class="Header Container" aria-expanded="false" aria-label="Toggle navigation">
 				<a class="Header__logoLink" href="/">
 					<img
 						class="Header__logoLink__logo"
