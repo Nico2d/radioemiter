@@ -1,0 +1,77 @@
+.Partners {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+}
+
+.Partners__Card {
+    position: relative;
+    height: 200px;
+    
+    .Image img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 200px;
+        max-height: 170px;
+        height: auto;
+    }
+
+    &:hover {
+        .Card__front {
+            transform: perspective(900px) rotateY(-180deg);
+        }
+
+        .Card__back {
+            transform: perspective(900px) rotateY(0deg);
+        }
+    }
+}
+
+.Card__content {
+    overflow: hidden;
+    background-color: $gray-300;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: $black;
+    padding: 0 20px;
+}
+
+.Card__front, .Card__back {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    backface-visibility: hidden;
+    transition: transform 800ms;
+}
+
+.Card__front {
+    transform: perspective(900px) rotateY(0deg);
+}
+
+.Card__back {
+    transform: perspective(900px) rotateY(180deg);
+}
+
+.Card__description {
+    font-weight: bold;
+}
+
+.Card__link {
+    visibility: hidden;
+
+    &::after{
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        visibility: visible;
+        content: 'Dowiedz się wiecej...';
+    }
+}

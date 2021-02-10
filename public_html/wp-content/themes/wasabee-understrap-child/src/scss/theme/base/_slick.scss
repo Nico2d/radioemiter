@@ -1,0 +1,18 @@
+.slick-prev {
+    left: nth($container-spaces, 3);
+}
+
+.slick-next {
+    right: nth($container-spaces, 3);
+}
+
+.slick-prev,
+.slick-next {
+    margin: 0 -#{map-get($spacers, 5)};
+    z-index: 9999;
+
+    &::before {
+        font-size: $base-font-size;
+        color: $primary;
+    }
+}

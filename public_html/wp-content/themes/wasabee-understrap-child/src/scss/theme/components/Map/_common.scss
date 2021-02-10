@@ -1,0 +1,13 @@
+.Map__view {
+    margin-bottom: map-get($spacers, 3);
+}
+
+.Map__content {
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+
+    .PostContent {
+        margin: 0;
+    }
+}

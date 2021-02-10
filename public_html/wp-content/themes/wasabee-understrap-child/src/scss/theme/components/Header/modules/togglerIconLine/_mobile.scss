@@ -1,0 +1,156 @@
+.Header__toggler__iconLine {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: $white;
+    opacity: .5;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+
+    &:nth-of-type(1) {
+        top: 0;
+    }
+    
+    &:nth-of-type(2) {
+        width: 65%;
+        top: 50%;
+        left: 35%;
+        transform: translateY(-50%);
+    }
+
+    &:nth-of-type(3) {
+        bottom: 0;
+    }
+}
+
+.Header.--is-after-first-click .Header__toggler__iconLine {
+    animation-duration: 200ms;
+    
+    &:nth-of-type(1) {
+        animation-name: collapseFirstIcon;
+    }
+    
+    &:nth-of-type(2) {
+        animation-name: collapseSecondIcon;
+    }
+
+    &:nth-of-type(3) {
+        animation-name: collapseThirdIcon;
+    }
+}
+
+.Header[aria-expanded=true] .Header__toggler__iconLine {
+    animation-duration: 1000ms;
+    
+    &:nth-of-type(1) {
+        animation-name: expandFirstIcon;
+    }
+    
+    &:nth-of-type(2) {
+        animation-name: expandSecondIcon;
+    }
+
+    &:nth-of-type(3) {
+        animation-name: expandThirdIcon;
+    }
+}
+
+@keyframes expandFirstIcon {
+    30% {
+        top: 45.4%;
+    }
+
+    50% {
+        top: 45.4%;
+        transform: rotate(29deg);
+    }
+    
+    100% {
+        top: 45.4%;
+        transform: rotate(29deg);
+    }
+}
+
+@keyframes expandSecondIcon {
+    30% {
+        opacity: 1;
+        top: 45.4%;
+        left: 0;
+        width: 100%;
+    }
+    
+    50% {
+        top: 45.4%;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(0) rotate(29deg);
+    }
+
+    100% {
+        top: 45.4%;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(0) rotate(29deg);
+    }
+}
+
+@keyframes expandThirdIcon {
+    30% {
+        bottom: 45.4%;
+    }
+
+    50% {
+        bottom: 45.4%;
+        transform: rotate(-29deg);
+    }
+    
+    100% {
+        bottom: 45.4%;
+        transform: rotate(-29deg);
+    }
+}
+
+@keyframes collapseFirstIcon {
+    from {
+        top: 45.4%;
+        transform: rotate(29deg);
+    }
+    
+    to {
+        top: 0;
+    }
+}
+
+@keyframes collapseSecondIcon {
+    from {
+        top: 45.4%;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(0) rotate(29deg);
+    }
+    
+    to {
+        width: 65%;
+        top: 50%;
+        left: 35%;
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes collapseThirdIcon {
+    from {
+        bottom: 45.4%;
+        transform: rotate(-29deg);
+    }
+    
+    to {
+        bottom: 0;
+    }
+}

@@ -1,0 +1,9 @@
+@import "common";
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+    @import 'not-mobile';
+}
+
+@media (max-width: map-get($grid-breakpoints, 'md') - 1) {
+    @import 'mobile';
+}

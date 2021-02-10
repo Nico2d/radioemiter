@@ -1,0 +1,9 @@
+.Header__content {
+    justify-content: flex-start;
+    text-align: right;
+}
+
+.Header[aria-expanded=true] .Header__content {
+    width: 100%;
+    flex-direction: column;
+}

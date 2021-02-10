@@ -1,0 +1,12 @@
+.Header__content__linkWrapper {
+    margin: 0 2rem;
+    list-style: none;
+}
+
+.Header__content__linkWrapper:hover {
+    position: relative;
+
+    >a {
+        color: $white;
+    }
+}

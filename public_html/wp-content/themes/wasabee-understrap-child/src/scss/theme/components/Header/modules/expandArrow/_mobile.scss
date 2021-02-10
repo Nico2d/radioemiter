@@ -1,0 +1,40 @@
+.Header__content__expandArrow {
+    position: absolute;
+    top: -7px;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50%;
+        height: 2px;
+        background: $black;
+        border-radius: $border-radius;
+        transition: transform 280ms cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    &::before {
+        right: 10px;
+        transform: rotate(45deg);
+    }
+    
+    &::after {
+        right: 0;
+        transform: rotate(-45deg);
+    }
+}
+
+.Header__content__linkWrapper[aria-expanded=true] .Header__content__expandArrow {
+    &::before {
+        transform: rotate(-45deg);
+    }
+    
+    &::after {
+        transform: rotate(45deg);
+    }
+}

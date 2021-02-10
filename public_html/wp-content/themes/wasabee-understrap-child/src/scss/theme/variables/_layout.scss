@@ -1,0 +1,31 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap-reboot";
+
+$border-radius-sm: .375rem;
+$border-radius: .5rem;
+$border-radius-lg: 1rem;
+
+$container-spaces:
+    responsive-space(0.5),
+    responsive-space(1),
+    responsive-space(2);
+
+$container-spaces-mobile: 14px, 24px, 24px;
+
+$spacers: (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3),
+    6: ($spacer * 4.5),
+    7: ($spacer * 6),
+    8: ($spacer * 7.5),
+    9: ($spacer * 9),
+    10: ($spacer * 10.5)
+);
+
+$cardlist-space-mobile: 60px;
+$functionalities-image-width: 640px;
+$functionalities-text-dot-size: 14px;
+$functionalities-text-dot-space: $functionalities-text-dot-size * 2;

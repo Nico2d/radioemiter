@@ -1,0 +1,14 @@
+.Title--with-lines {
+    padding: 0 5rem;
+
+    &::before {
+        position: absolute;
+        content: '';
+        height: 3px;
+        background-color: $primary;
+        left: -20rem;
+        right: -20rem;
+        top: 50%;
+        z-index: -1;
+    }
+}

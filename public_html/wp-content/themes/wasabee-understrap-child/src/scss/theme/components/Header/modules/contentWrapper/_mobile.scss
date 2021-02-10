@@ -1,0 +1,23 @@
+.Header__contentWrapper {
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 91px;
+    padding: 0 map-get($spacers, 3);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: $gray-900;
+    opacity: 0;
+    z-index: 1;
+    // border-radius: 2.5rem;
+    transition:
+        all 500ms cubic-bezier(0.23, 1, 0.320, 1),
+        opacity 250ms cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.Header[aria-expanded=true] .Header__contentWrapper {
+    left: 0;
+    opacity: 1;
+}

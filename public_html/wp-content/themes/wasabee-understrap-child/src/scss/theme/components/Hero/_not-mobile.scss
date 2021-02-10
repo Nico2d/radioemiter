@@ -1,0 +1,21 @@
+.Hero {
+    flex-flow: row nowrap;
+
+    &--is-reversed {
+        flex-direction: row-reverse;
+    }
+}
+
+.Hero__Side {
+    flex: 1 0 50%;
+
+    >img {
+        min-height: 500px;
+        object-fit: cover;
+    }
+    
+    &--indent {
+        padding: map-get($spacers, 4);
+        margin-right: nth($container-spaces, 3);
+    }
+}

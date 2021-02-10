@@ -1,0 +1,84 @@
+.Footer {
+    position: relative;
+    color: white;
+    background: rgb(185,41,47);
+    background: linear-gradient(90deg, rgba(185,41,47,1) 20%, rgba(230,152,37,1) 115%);
+}
+
+.Footer__social {
+    position: relative;
+    display: flex;
+    align-content: center;
+    width: max-content;
+    margin-left: auto;
+}
+
+.Footer__social__heading {
+    font-weight: bold;
+    font-size: 1.3em;
+    white-space: nowrap;
+    margin: auto 0;
+}
+
+.Footer__social .LinkIcon__icon {
+    max-height: 30px;
+    width: auto;
+    margin-left: map-get($spacers, 4);
+}
+
+.Footer__legal {
+    background: $black;
+    padding: map-get($spacers, 3) 0;
+}
+
+.Footer__legal__info {
+    font-size: .7em;
+    text-align: center;
+    margin: 0;
+}
+
+.Footer__headingContainer {
+    display: inline-flex;
+    width: 100%;
+    padding: map-get($spacers, 4);
+}
+
+.Footer__Contact {
+    display: inline-flex;
+    width: 100%;
+    background-color: $background-footer;
+    justify-content: space-between;
+    padding: map-get($spacers, 4) nth($container-spaces, 2);
+
+    &--is-transparent {
+        background-color: unset;
+    }
+}
+
+.Contact__Container {
+    display: block;
+    margin: auto 0;
+}
+
+.Contact__map {
+    height: 250px;
+}
+
+.Contact__SocialMedia {
+    display: inline-flex;
+    width: 100%;
+    margin: 10px 0;
+
+    .SocialMedia__icon {
+        margin: 10px 20px;
+    }
+
+    >i {
+        font-size: 30px;
+    }
+
+    >span, p  {
+        margin: auto 0;
+        letter-spacing: 2px;
+    }
+}

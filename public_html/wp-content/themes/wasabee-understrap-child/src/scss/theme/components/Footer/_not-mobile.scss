@@ -1,0 +1,37 @@
+.Footer__sitemap {
+    padding: 0 nth($container-spaces, 2) map-get($spacers, 5);
+    justify-content: space-between;
+}
+
+.Footer__sitemap::after {
+    margin: 0 nth($container-spaces, 2);
+}
+
+.Footer__headingContainer {
+    padding: map-get($spacers, 4) nth($container-spaces, 2);
+}
+
+.Footer__sitemap__children {
+    display: inline-block;
+    margin: map-get($spacers, 2) 0 0;
+    padding: 0;
+}
+
+.Footer__sitemap__children .Footer__sitemap__link {
+    font-size: $base-font-size * 0.6;
+    font-weight: 500;
+}
+
+.Footer__sitemap__linkWrapper.--is-root {
+    padding-top: map-get($spacers, 4);
+    padding-right: map-get($spacers, 5);
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+.Contact__map {
+    float: right;
+    width: 500px;
+}

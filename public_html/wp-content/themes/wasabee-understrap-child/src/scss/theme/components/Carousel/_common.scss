@@ -1,0 +1,40 @@
+.Arrow {
+    content: '';
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-image: url("http://wasabee.wordpress.test/wp-content/uploads/2019/09/arrow_left.png");
+    background-repeat: no-repeat;
+
+    &::before {
+        color: transparent;
+    }
+}
+
+.Carousel {
+    // @extend .TextImageSectionList;
+    position: relative;
+    margin-bottom: map-get($spacers, 4);
+
+    .slick-prev {
+        @extend .Arrow;
+        left: nth($container-spaces, 1); 
+        transform: scale(1, 1);
+    }
+    
+    .slick-next {
+        @extend .Arrow;
+        right: nth($container-spaces, 1);
+        transform: scale(-1, 1);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+    }
+}

@@ -1,0 +1,8 @@
+.HeroSubtitle {
+    margin-top: #{$header-margin * 0.5};
+    font-weight: bold;
+
+    & + & {
+        margin-top: 0;
+    }
+}

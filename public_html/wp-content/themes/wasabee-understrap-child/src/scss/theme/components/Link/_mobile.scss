@@ -1,0 +1,9 @@
+.Link {
+    &--is-filled-button {
+        @include ButtonFilledMobile($primary);
+    }
+
+    &--is-empty-button {
+        @include ButtonEmptyMobile($primary);
+    }
+}

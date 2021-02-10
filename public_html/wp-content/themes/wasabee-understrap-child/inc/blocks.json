@@ -1,0 +1,190 @@
+{
+    "default": {
+        "template": {
+            "name": "default",
+            "description": "Default description",
+            "mode": "edit",
+            "category": "wasabee",
+            "icon": {
+                "background": "#fff",
+                "foreground": "#299dea",
+                "src": "tagcloud"
+            },
+            "styles": [
+                {
+                    "name": "bg-primary",
+                    "label": "Primary blue background with white text"
+                }
+            ]
+        },
+        "value": [
+            { "name": "hero" },
+            { "name": "hero_reversed" },
+            { "name": "hero_title" },
+            { "name": "hero_subtitle" },
+            { "name": "hero_content" },
+            { "name": "card_grid" },
+            { "name": "text_section_with_image_list" },
+            { "name": "text_section_with_image_list_process" },
+            { "name": "text_section_with_image_1_row" },
+            { "name": "text_section_with_image_2_columns" },
+            { "name": "text_section_with_inline_image_2_columns" },
+            { "name": "text_with_emphasis" },
+            { "name": "horizontal_link_cards_2_columns" },
+            { "name": "card_list" },
+            { "name": "container" },
+            { "name": "container_centered" },
+            { "name": "card_with_header_list" },
+            { "name": "whitespace" },
+            { "name": "map_list" },
+            { "name": "form_list" },
+            { "name": "form_with_map" },
+            { "name": "grid_3_columns" },
+            { "name": "text_section_with_image_list_steps" },
+            { "name": "text_section_with_image_3_columns" },
+            { "name": "carousel" },
+            { "name": "key_functionalities" },
+            { "name": "text_section_with_image" },
+            { "name": "breadcrumbs" },
+            { "name": "text_section_with_image_carousel" },
+            { "name": "text_with_emphasis_veritcal" },
+            { "name": "maps" },
+            { "name": "contact" },
+            { "name": "parallax" }
+        ]
+    },
+    "default_posts": {
+        "template": {
+            "name": "default_posts",
+            "description": "Default posts description",
+            "mode": "preview",
+            "category": "wasabee",
+            "icon": {
+                "background": "#299dea",
+                "foreground": "#fff",
+                "src": "format-aside"
+            }
+        },
+        "value": [
+            { 
+                "name": "members",
+                "posts_args": {
+                    "post_type": "members",
+                    "orderby": "title",
+                    "order": "ASC",
+                    "numberposts": -1
+                },
+                "wrapper_class_name": ""
+            },
+            { 
+                "name": "partners",
+                "posts_args": {
+                    "post_type": "partners",
+                    "orderby": "title",
+                    "order": "ASC"
+                },
+                "wrapper_class_name": "Partners Container"
+            }
+        ]
+    },
+    "filtered_posts": {
+        "template": {
+            "name": "filtered_posts",
+            "description": "filtered posts description",
+            "mode": "preview",
+            "category": "wasabee",
+            "icon": {
+                "background": "#299dea",
+                "foreground": "#fff",
+                "src": "format-aside"
+            }
+        },
+        "value": [
+            { 
+                "name": "audycje_pn",
+                "posts_args": {
+                    "post_type": "audycje"
+                    
+                },
+                "terms": "poniedzialek",
+                "taxonomy": "audycje_categories",
+                "wrapper_class_name": "Audycje"
+            },
+            { 
+                "name": "audycje_wt",
+                "posts_args": {
+                    "post_type": "audycje"
+                },
+                "terms": "wtorek",
+                "taxonomy": "audycje_categories",
+                "wrapper_class_name": "Audycje"
+            },
+            { 
+                "name": "audycje_sroda",
+                "posts_args": {
+                    "post_type": "audycje"
+                },
+                "taxonomy": "audycje_categories",
+                "terms": "sroda",
+                "wrapper_class_name": "Audycje"
+            },
+            { 
+                "name": "audycje_czwartek",
+                "posts_args": {
+                    "post_type": "audycje"
+                },
+                "taxonomy": "audycje_categories",
+                "terms": "czwartek",
+                "wrapper_class_name": "Audycje"
+            },
+            { 
+                "name": "audycje_piatek",
+                "posts_args": {
+                    "post_type": "audycje"
+                },
+                "taxonomy": "audycje_categories",
+                "terms": "piatek",
+                "wrapper_class_name": "Audycje"
+            },
+            {
+                "name": "Wiadomosci",
+                "posts_args": {
+                    "posts_per_page": 10
+                },
+                "wrapper_class_name": "PostsList PostList--light Container",
+                "taxonomy": "category"
+            },
+            {
+                "name": "Najnowsze 3 Wiadomosci",
+                "posts_args": {
+                    "numberposts": 3
+                },
+                "wrapper_class_name": "PostsList PostList--light Container",
+                "taxonomy": "resources_categories"
+            }
+        ]
+    },
+    "post_filter_withImages": {
+        "template": {
+            "name": "post_filter_withImages",
+            "description": "post filter with images",
+            "mode": "preview",
+            "category": "wasabee",
+            "icon": {
+                "background": "#fff",
+                "foreground": "#299dea",
+                "src": "tagcloud"
+            }
+        },
+        "value": [
+            {
+                "name": "postFilterWithImages",
+                "category_args": {
+                    "hide_empty": 0,
+                    "orderby": "ID",
+                    "order": "ASC"
+                }
+            }
+        ]
+    }
+}

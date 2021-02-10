@@ -1,0 +1,5 @@
+@mixin TextImageSection($columns) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    grid-gap: 50px 100px;
+}

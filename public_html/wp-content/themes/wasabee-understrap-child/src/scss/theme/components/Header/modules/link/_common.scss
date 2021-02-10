@@ -1,0 +1,7 @@
+.Header__content__link {
+    @extend .PostContent;
+    color: $font-main;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    text-transform: uppercase;
+}

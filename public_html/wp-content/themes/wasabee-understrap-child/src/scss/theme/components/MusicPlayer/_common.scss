@@ -1,0 +1,96 @@
+.MusicPlayer__Container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-image: url("/public_html/wp-content/themes/wasabee-understrap-child/src/img/player_background.jpg");
+}
+
+.MusicPlayer {
+    display: inline-flex;
+    height: 300px;
+}
+
+.MusicPlayer__Controls {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    padding: 4rem 0;
+    left: 50%;
+
+    .fas {
+        color: white;
+        font-size: 25px;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        height: 5px;
+        border-radius: 5px;  
+        background: #d3d3d3;
+        outline: none;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+
+        margin: auto 20px;
+        width: 90px;
+      }
+      
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%; 
+        background: white;
+        cursor: pointer;
+      }
+      
+      .slider::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: white;
+        cursor: pointer;
+      }
+}
+
+.Controls__button {
+    width: 30px;
+    display: inline-flex;
+}
+
+.MusicPlayer__cover {
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+
+    >img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.MusicPlayer__songTitle {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.MusicPlayer__songAuthor {
+    font-size: 2rem;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.MusicPlayer__TextContainer {
+    position: absolute;
+}
+
+.Controls__volume {
+    margin-left: 10rem;
+    display: flex;
+}
